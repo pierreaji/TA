@@ -60,8 +60,8 @@ class ItemsWarehouseController extends Controller
             ->where('status', -1);
             $itemRequest = ItemRequest::orderBy('id', 'desc')->where('id_user', $firstSales->id)->select('id', 'id_item', 'id_user', 'stock', 'type', 'status', 'id as identity')->whereNull('approved_at')->whereBetween('created_at', $this->week)->where('status', -1)->union($itemRequest);
         } else {
-            $itemRequest = ItemAssign::orderBy('id', 'desc')->where('id_user', $firstSales->id)->select('id', 'id_item', 'id_user', 'stock', 'type', 'status', 'identity')->whereBetween('created_at', $this->week)->where('is_temp', false)->whereNotIn('status', [2, -1]);
-            $itemRequest = ItemRequest::orderBy('id', 'desc')->where('id_user', $firstSales->id)->select('id', 'id_item', 'id_user', 'stock', 'type', 'status', 'id as identity')->whereBetween('created_at', $this->week)->whereNotIn('status', [2, -1])->union($itemRequest);
+            $itemRequest = ItemAssign::orderBy('id', 'desc')->where('id_user', $firstSales->id)->select('id', 'id_item', 'id_user', 'stock', 'type', 'status', 'identity')->whereBetween('created_at', $this->week)->where('is_temp', false)->whereNotIn('status', [2, -1, 1]);
+            $itemRequest = ItemRequest::orderBy('id', 'desc')->where('id_user', $firstSales->id)->select('id', 'id_item', 'id_user', 'stock', 'type', 'status', 'id as identity')->whereBetween('created_at', $this->week)->whereNotIn('status', [2, -1, 1])->union($itemRequest);
         }
 
         // if (Auth::user()->role != 'Sales') {

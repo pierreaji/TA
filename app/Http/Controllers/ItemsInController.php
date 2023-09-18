@@ -73,20 +73,37 @@ class ItemsInController extends Controller
             },
             'ItemAssign as assign_stocks' => function ($query) {
                 $query->select(DB::raw('SUM(stock)'));
-                $query->whereNotNull('approved_at');
-                $query->where('status', '!=', 2);
+                $query->where(function ($query) {
+                    $query->whereNotNull('approved_at');
+                    $query->where('status', '!=', 2);
+                });
+                $query->orWhere(function ($query) {
+                    $query->whereNotNull('approved_at');
+                    $query->whereNotNull('deleted_at');
+                });
             },
             'ItemRequest as store_stocks' => function ($query) {
                 $query->select(DB::raw('SUM(stock)'));
-                $query->whereNotNull('approved_at');
-                $query->where('status', '!=', 2);
+                $query->where(function ($query) {
+                    $query->whereNotNull('approved_at');
+                    $query->where('status', '!=', 2);
+                });
+                $query->orWhere(function ($query) {
+                    $query->whereNotNull('approved_at');
+                    $query->whereNotNull('deleted_at');
+                });
+            },
+            'Transactions as items_sold' => function ($query) {
+                $query->select(DB::raw('SUM(items_sold)'));
+                $query->whereNotNull('is_return');
             },
         ]);
+
         $itemRequest = ItemRequest::withTrashed()
-                            ->select('stock', 'id_item', 'deleted_at', DB::raw('id as is_temp'))
-                            ->whereNotNull('approved_at')
-                            ->where('status', 1)
-                            ->whereNotNull('deleted_at');
+            ->select('stock', 'id_item', 'deleted_at', DB::raw('id as is_temp'))
+            ->whereNotNull('approved_at')
+            ->where('status', 1)
+            ->whereNotNull('deleted_at');
         $itemAssign = ItemAssign::withTrashed()
             ->select('stock', 'id_item', 'deleted_at', DB::raw('id as is_temp'))
             ->whereNotNull('approved_at')

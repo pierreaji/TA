@@ -16,7 +16,7 @@
                 </div>
                 <div class="pb-20">
                     <div class="card-datatable table-responsive">
-                        <table class="dt-row-grouping table table-bordered">
+                        <table class="datatables-basic2 table table table-bordered">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -241,6 +241,7 @@
                 window.location.replace(`{{ route('sales.transaction.index') }}?date=${val}`)
             }
         })
+        
         $('.btn-modal').on('click', function() {
             let stock = $(this).data('stock')
             let id = $(this).data('id')
@@ -266,7 +267,7 @@
                                 $sold_stocks = $item->sold_stocks ?? 0;
                             @endphp
                             <option value="{{ $item->id }}|{{ $stocks - $sold_stocks }}" data-stock="{{ $stocks - $sold_stocks }}"
-                                data-id="{{ $item->id }}">{{ $item->name }} | Stocks : {{ $stocks }}</option>
+                                data-id="{{ $item->id }}">{{ $item->name }} | Stocks : {{ ($stocks - $sold_stocks) < 0 ? 0 : $stocks - $sold_stocks }}</option>
                         @endforeach
                     </select>
                 </div>

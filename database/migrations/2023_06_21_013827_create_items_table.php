@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->bigInteger('distributor_price');
             $table->bigInteger('sale_price');
-            $table->enum('type', ['Pack', 'Carton'])->default('Pack');
+            $table->enum('type', ['Pack', 'Carton', 'Pless', 'Refill', 'Renceng'])->default('Pack');
             $table->timestamps();
 
             $table->foreign('id_category')->references('id')->on('category')->onDelete('cascade');

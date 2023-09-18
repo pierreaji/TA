@@ -82,6 +82,7 @@ class ReportController extends Controller
                 ->selectRaw('id_item, stock, created_at')
                 ->with('Item')
                 // ->whereNotNull('approved_at')
+                ->withTrashed()
                 ->where('status', 1)
                 ->whereDate('created_at', $request->detailDate);
         } else {
@@ -89,6 +90,7 @@ class ReportController extends Controller
                 ->selectRaw('id_item, stock, created_at')
                 ->whereBetween('approved_at', $this->week)
                 ->where('status', 1)
+                ->withTrashed()
                 // ->whereNotNull('approved_at')
                 ->with('Item');
         }

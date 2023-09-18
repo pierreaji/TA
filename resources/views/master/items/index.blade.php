@@ -102,21 +102,24 @@
                                 <option value="" selected disabled>Select Type</option>
                                 <option value="Pack">Pack</option>
                                 <option value="Carton">Carton</option>
+                                <option value="Pless">Pless</option>
+                                <option value="Refill">Refill</option>
+                                <option value="Renceng">Renceng</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label>Name</label>
-                            <input class="form-control" type="text" name="name" placeholder="Seblak" required>
+                            <input class="form-control" type="text" name="name" placeholder="" required>
                         </div>
                         <div class="form-group">
                             <label>Distributor Price</label>
                             <input class="form-control form-rupiah" type="text" name="distributor_price"
-                                placeholder="10000" required>
+                                placeholder="" required>
                         </div>
                         <div class="form-group">
                             <label>Stockist Price</label>
-                            <input class="form-control form-rupiah" type="text" name="sale_price" placeholder="10000"
+                            <input class="form-control form-rupiah" type="text" name="sale_price" placeholder=""
                                 required>
                         </div>
                     </div>
@@ -148,7 +151,7 @@
 
             $(`select[name=category]`).val(val.data('category')).trigger('change')
             $(`select[name=distributor]`).val(val.data('distributor')).trigger('change')
-            $(`select[name=type]`).val(val.data('type')).trigger('change')
+            // $(`select[name=type]`).val(val.data('type')).trigger('change')
         })
 
         $(document).on('click', '.btn-delete', function() {

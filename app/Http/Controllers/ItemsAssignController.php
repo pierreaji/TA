@@ -54,12 +54,20 @@ class ItemsAssignController extends Controller
         // dd(ItemAssign::all()->toArray());
 
         $assignIdentity = ItemAssign::whereNull('approved_at')
-            ->select('identity', 'stock', DB::raw('COUNT(id_user) user_total'), 'is_temp', 'id_item')
+            ->select('identity', 'stock', DB::raw('COUNT(id_user) user_total'), 'is_temp', 'id_item', DB::raw("weekday(created_at)"))
             ->with('Item')
-            ->groupBy('identity', 'is_temp', 'id_item', 'stock')
+            ->groupBy('identity', 'is_temp', 'id_item', 'stock', 'created_at')
             ->whereBetween('created_at', $this->week)
+            ->where(function($query) use ($request) {
+                if($request->date == null) {
+                    $query->where(function($query) {
+                        $query->where(DB::raw("weekday(created_at)"), 4);
+                        $query->orWhere(DB::raw("weekday(created_at)"), 5);
+                        $query->orWhere(DB::raw("weekday(created_at)"), 6);
+                    });
+                }
+            })
             ->get();
-
 
         $data = [
             'sales' => User::where('role', 'Sales')->get(),
@@ -67,7 +75,11 @@ class ItemsAssignController extends Controller
             'items' => $items->get(),
             'firstSales' => $firstSales,
             'itemAssign' => $assignIdentity,
-            'type' => $type
+            'type' => $type,
+            'date' => [
+                $this->week[0],
+                $this->week[1],
+            ]
         ];
         return view('items.assign.index', $data);
     }

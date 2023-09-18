@@ -88,9 +88,9 @@
                                 <i class="anticon anticon-camera"></i> Preview File
                             </a>
                             <br>
-                            @if (Auth::user()->role != 'Admin')
+                            {{-- @if (Auth::user()->role != 'Admin')
                             <a href="{{ url('userssalesdoc') }}/{{ $user->id }}">Download Template</a>
-                            @endif
+                            @endif --}}
                         </div>
                         <div class="mb-3">
                             <div class="btn-group">
@@ -105,15 +105,15 @@
                                         'agreement' => $user->Sales->agreement,
                                     ];
                                 @endphp
-                                
+                                <a href="https://syncmas.subang.tech/users" class="btn btn-sm btn-light">Back</a>
                                 @if (Auth::user()->role == 'Admin' && in_array(null, $files) && $user->Sales->approved_status != 0)
                                 <button class="btn btn-primary">Save</button>
                                 @elseif (Auth::user()->role == 'Sales') 
                                 <button class="btn btn-primary">Save</button>
                                 @endif
-                                @if (Auth::user()->role == 'Admin' && !in_array(null, $files) && $user->Sales->approved_status != 0)
+                                {{-- @if (Auth::user()->role == 'Admin' && !in_array(null, $files) && $user->Sales->approved_status != 0)
                                     <button class="btn btn-warning" name="renew" value="true">Renew</button>
-                                @endif
+                                @endif --}}
                                 @if(Auth::user()->role == 'Admin' && $user->Sales->approved_status == 0)
                                     <button type="button" class="btn btn-approve btn-success" data-status="1"
                                         data-bs-toggle="modal" data-bs-target="#Medium-modal">Approve</button>

@@ -15,7 +15,8 @@
                                 {{ $item->name }}</option>
                         @endforeach
                     </select> --}}
-                    @if (!in_array(date('l'), ['Saturday','Sunday', 'Monday']))
+                    @if (!in_array(date('l'), ['Monday','Tuesday', 'Wednesday', 'Thursday']))
+                    {{-- 'Monday','Tuesday', 'Wednesday', 'Thursday' --}}
                         <div class="pd-20 mt-2">
                             <button class="btn btn-sm btn-primary btn-modal" data-sales="{{ $firstSales->id }}" data-bs-toggle="modal"
                                 data-bs-target="#Medium-modal" type="button">
@@ -202,13 +203,13 @@
                 `,
                     messageTop: `
                     Type: Items Assign
-                    Date: {{ Request::get('detailDate') }}
+                    Date: {{ $date[0] }} - {{ $date[1] }}
 
                     `,
                 exportOptions: {
                     columns: [0,1,2,3,4,5,6]
                 },
-                footer: false,
+                footer: true,
                 customize: function(doc) {
                     // doc.content[0].syle
                     doc.content.splice( 1, 0, {

@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         $user->save();
 
         $user = new User();
-        $user->name = 'Sales';
+        $user->name = 'Ujang Diki';
         $user->email = 'sales@sales.com';
         $user->password = Hash::make('password');
         $user->role = 'Sales';
@@ -46,11 +46,14 @@ class DatabaseSeeder extends Seeder
 
         $sales = new UserSales();
         $sales->id_user = $user->id;
-        $sales->type = 'Car';
+        $sales->type = 'Motorcycle';
         $sales->skck = 'dummy';
         $sales->ktp = 'dummy';
         $sales->sim = 'dummy';
         $sales->stnk = 'dummy';
+        $sales->nik = '321307899627111'; 
+        $sales->number = '085314000141'; 
+        $sales->address = 'Subang, Jawa Barat'; 
         $sales->pas_foto = 'dummy';
         $sales->sertifikat = 'dummy';
         $sales->agreement = 'dummy';
@@ -58,7 +61,7 @@ class DatabaseSeeder extends Seeder
         $sales->save();
 
         $user = new User();
-        $user->name = 'Sales2';
+        $user->name = 'Rozak Nurhakim';
         $user->email = 'sales2@sales.com';
         $user->password = Hash::make('password');
         $user->role = 'Sales';
@@ -69,6 +72,9 @@ class DatabaseSeeder extends Seeder
         $sales->type = 'Car';
         $sales->skck = 'dummy';
         $sales->ktp = 'dummy';
+        $sales->nik = '321307899627111'; 
+        $sales->number = '085314000141'; 
+        $sales->address = 'Subang, Jawa Barat'; 
         $sales->sim = 'dummy';
         $sales->stnk = 'dummy';
         $sales->pas_foto = 'dummy';
@@ -179,15 +185,197 @@ class DatabaseSeeder extends Seeder
 
         $item = new Item();
         $item->id_category = $category->id;
-        $item->id_distributor = $distributor->id;
+        $item->id_distributor = '1';
         $item->name = 'Real Good Chocolate';
+        $item->type = 'Carton';
         $item->sale_price = str_replace('.', '', '25000');
         $item->distributor_price = str_replace('.', '', '24000');
         $item->save();
 
+        $item = new Item();
+        $item->id_category = $category->id;
+        $item->id_distributor = '1';
+        $item->name = 'Sosis So Nice 1000';
+        $item->type = 'Pless';
+        $item->sale_price = str_replace('.', '', '17000');
+        $item->distributor_price = str_replace('.', '', '15000');
+        $item->save();
+
+        $item = new Item();
+        $item->id_category = $category->id;
+        $item->id_distributor = '1';
+        $item->name = 'Sosis So Nice 2000';
+        $item->type = 'Pless';
+        $item->sale_price = str_replace('.', '', '18500');
+        $item->distributor_price = str_replace('.', '', '17000');
+        $item->save();
+
+
+        $item = new Item();
+        $item->id_category = $category->id;
+        $item->id_distributor = '1';
+        $item->name = 'Sosis Jumbo Temen Mie';
+        $item->type = 'Pless';
+        $item->sale_price = str_replace('.', '', '19500');
+        $item->distributor_price = str_replace('.', '', '18000');
+        $item->save();
+
+        $item = new Item();
+        $item->id_category = $category->id;
+        $item->id_distributor = '5';
+        $item->name = 'Oreo Vanilla Cream';
+        $item->type = 'Pack';
+        $item->sale_price = str_replace('.', '', '24000');
+        $item->distributor_price = str_replace('.', '', '23000');
+        $item->save();
+
+        $item = new Item();
+        $item->id_category = $category->id;
+        $item->id_distributor = '5';
+        $item->name = 'Oreo Ice Cream Blue';
+        $item->type = 'Pack';
+        $item->sale_price = str_replace('.', '', '24000');
+        $item->distributor_price = str_replace('.', '', '23000');
+        $item->save();
+
+        $item = new Item();
+        $item->id_category = $category->id;
+        $item->id_distributor = '5';
+        $item->name = 'Oreo Chocolate Sandwitch';
+        $item->type = 'Pack';
+        $item->sale_price = str_replace('.', '', '18000');
+        $item->distributor_price = str_replace('.', '', '17000');
+        $item->save();
+
+        $item = new Item();
+        $item->id_category = $category->id;
+        $item->id_distributor = '3';
+        $item->name = 'Garuda Kacang Kulit';
+        $item->type = 'Pack';
+        $item->sale_price = str_replace('.', '', '18000');
+        $item->distributor_price = str_replace('.', '', '17000');
+        $item->save();
+
+        $item = new Item();
+        $item->id_category = $category->id;
+        $item->id_distributor = '3';
+        $item->name = 'Garuda Kacang Atom';
+        $item->type = 'Pack';
+        $item->sale_price = str_replace('.', '', '18000');
+        $item->distributor_price = str_replace('.', '', '17000');
+        $item->save();
+
+        $item = new Item();
+        $item->id_category = $category->id;
+        $item->id_distributor = '3';
+        $item->name = 'Gery Salute Marie Susu';
+        $item->type = 'Pack';
+        $item->sale_price = str_replace('.', '', '18000');
+        $item->distributor_price = str_replace('.', '', '17000');
+        $item->save();
+
+        $item = new Item();
+        $item->id_category = $category->id;
+        $item->id_distributor = '3';
+        $item->name = 'Chocolatos Coklat';
+        $item->type = 'Pack';
+        $item->sale_price = str_replace('.', '', '21000');
+        $item->distributor_price = str_replace('.', '', '18000');
+        $item->save();
+
+        $item = new Item();
+        $item->id_category = $category->id;
+        $item->id_distributor = '3';
+        $item->name = 'Chocolatos Vanilla';
+        $item->type = 'Pack';
+        $item->sale_price = str_replace('.', '', '21000');
+        $item->distributor_price = str_replace('.', '', '18000');
+        $item->save();
+
+        
+        $item = new Item();
+        $item->id_category = $category->id;
+        $item->id_distributor = '3';
+        $item->name = 'Gery Salute Malkist';
+        $item->type = 'Pack';
+        $item->sale_price = str_replace('.', '', '7000');
+        $item->distributor_price = str_replace('.', '', '6500');
+        $item->save();
+
+
         $in = new ItemIn();
-        $in->id_item = $item->id;
-        $in->id_user = $user->id;
+        $in->id_item = '1';
+        $in->id_user = '1';
+        $in->stock = 10;
+        $in->incoming_item_date = Carbon::now();
+        $in->save();
+
+        $in = new ItemIn();
+        $in->id_item = '2';
+        $in->id_user = '1';
+        $in->stock = 10;
+        $in->incoming_item_date = Carbon::now();
+        $in->save();
+
+        $in = new ItemIn();
+        $in->id_item = '3';
+        $in->id_user = '1';
+        $in->stock = 10;
+        $in->incoming_item_date = Carbon::now();
+        $in->save();
+
+        $in = new ItemIn();
+        $in->id_item = '4';
+        $in->id_user = '1';
+        $in->stock = 10;
+        $in->incoming_item_date = Carbon::now();
+        $in->save();
+        
+        $in = new ItemIn();
+        $in->id_item = '5';
+        $in->id_user = '1';
+        $in->stock = 10;
+        $in->incoming_item_date = Carbon::now();
+        $in->save();
+
+        $in = new ItemIn();
+        $in->id_item = '6';
+        $in->id_user = '1';
+        $in->stock = 10;
+        $in->incoming_item_date = Carbon::now();
+        $in->save();
+
+        $in = new ItemIn();
+        $in->id_item = '7';
+        $in->id_user = '1';
+        $in->stock = 10;
+        $in->incoming_item_date = Carbon::now();
+        $in->save();
+
+        $in = new ItemIn();
+        $in->id_item = '8';
+        $in->id_user = '1';
+        $in->stock = 10;
+        $in->incoming_item_date = Carbon::now();
+        $in->save();
+
+        $in = new ItemIn();
+        $in->id_item = '9';
+        $in->id_user = '1';
+        $in->stock = 10;
+        $in->incoming_item_date = Carbon::now();
+        $in->save();
+
+        $in = new ItemIn();
+        $in->id_item = '10';
+        $in->id_user = '1';
+        $in->stock = 10;
+        $in->incoming_item_date = Carbon::now();
+        $in->save();
+
+        $in = new ItemIn();
+        $in->id_item = '11';
+        $in->id_user = '1';
         $in->stock = 10;
         $in->incoming_item_date = Carbon::now();
         $in->save();

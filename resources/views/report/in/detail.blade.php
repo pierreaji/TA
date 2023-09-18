@@ -66,7 +66,7 @@
                 exportOptions: {
                     columns: ':visible'
                 },
-                footer: false,
+                footer: true,
                 customize: function(doc) {
                     doc.content.splice( 1, 0, {
                         margin: [ 0, 0, 0, 12 ],

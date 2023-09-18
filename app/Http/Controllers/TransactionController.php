@@ -82,7 +82,7 @@ class TransactionController extends Controller
                 $itemData[$date]['total'] = 0;
             }
             $itemData[$date]['shop'] = $row->shop_name;
-            $itemData[$date]['all_stock'] += $row->items_sold;
+            $itemData[$date]['all_stock'] += 1;
             $itemData[$date]['total'] += $row->items_sold * $row->Item->sale_price;
             $itemData[$date]['date'] = $row->created_at;
         }
@@ -120,6 +120,7 @@ class TransactionController extends Controller
                 } else {
                     $query->where('id_user', $firstSales->id);
                 }
+                $query->withTrashed();
                 $query->whereNotNull('approved_at');
                 $query->where('status', 1);
                 $query->whereBetween('approved_at', $this->week);
@@ -131,6 +132,7 @@ class TransactionController extends Controller
                 } else {
                     $query->where('id_user', $firstSales->id);
                 }
+                $query->withTrashed();
                 $query->whereNotNull('approved_at');
                 $query->where('status', 1);
                 $query->whereBetween('approved_at', $this->week);
@@ -160,6 +162,7 @@ class TransactionController extends Controller
                 } else {
                     $query->where('id_user', $firstSales->id);
                 }
+                $query->withTrashed();
                 $query->whereNotNull('approved_at');
                 $query->where('status', 1);
                 $query->whereBetween('approved_at', $this->week);
@@ -170,6 +173,7 @@ class TransactionController extends Controller
                 } else {
                     $query->where('id_user', $firstSales->id);
                 }
+                $query->withTrashed();
                 $query->whereNotNull('approved_at');
                 $query->where('status', 1);
                 $query->whereBetween('approved_at', $this->week);
@@ -334,6 +338,7 @@ class TransactionController extends Controller
                 } else {
                     $query->where('id_user', $firstSales->id);
                 }
+                $query->withTrashed();
                 $query->whereNotNull('approved_at');
                 $query->where('status', 1);
                 $query->whereBetween('approved_at', $this->week);
@@ -345,6 +350,7 @@ class TransactionController extends Controller
                 } else {
                     $query->where('id_user', $firstSales->id);
                 }
+                $query->withTrashed();
                 $query->whereNotNull('approved_at');
                 $query->where('status', 1);
                 $query->whereBetween('approved_at', $this->week);
@@ -365,6 +371,7 @@ class TransactionController extends Controller
                 } else {
                     $query->where('id_user', $firstSales->id);
                 }
+                $query->withTrashed();
                 $query->whereNotNull('approved_at');
                 $query->where('status', 1);
                 $query->whereBetween('approved_at', $this->week);
@@ -375,6 +382,7 @@ class TransactionController extends Controller
                 } else {
                     $query->where('id_user', $firstSales->id);
                 }
+                $query->withTrashed();
                 $query->whereNotNull('approved_at');
                 $query->where('status', 1);
                 $query->whereBetween('approved_at', $this->week);

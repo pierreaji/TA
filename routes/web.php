@@ -63,10 +63,10 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::resource('category', CategoryController::class);
     Route::resource('distributor', DistributorController::class);
     Route::resource('items', ItemsController::class);
+    Route::get('items/in/stock', [ItemsInController::class, 'stock'])->name('items.in.stock');
     Route::prefix('items')->name('items.')->group(function () {
         Route::prefix('in')->middleware('admin')->name('in.')->group(function () {
             Route::get('index', [ItemsInController::class, 'index'])->name('index');
-            Route::get('stock', [ItemsInController::class, 'stock'])->name('stock');
             Route::post('store', [ItemsInController::class, 'store'])->name('store');
             Route::post('update', [ItemsInController::class, 'update'])->name('update');
             Route::delete('delete/{id}', [ItemsInController::class, 'destroy'])->name('delete');

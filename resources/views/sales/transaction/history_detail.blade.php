@@ -47,7 +47,10 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colspan="5" class="text-end">Total Stockist Price:</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td colspan="1" class="text-end">Total Stockist Price:</td>
                                     <td colspan="1">Rp. {{ number_format($total, 0) }}</td>
                                     <td colspan="1">Rp. {{ number_format($total2, 0) }}</td>
                                 </tr>
@@ -77,7 +80,7 @@
                     exportOptions: {
                         columns: ':visible'
                     },
-                    footer: false,
+                    footer: true,
                     customize: function(doc) {
                         
                         doc.content.splice( 1, 0, {

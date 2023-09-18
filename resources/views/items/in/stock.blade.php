@@ -53,13 +53,14 @@
                                     <tr>
                                         @php
                                             $stocks = $item->store_stocks + $item->assign_stocks;
+                                            $stocks = $stocks + $item->items_sold;
                                             // $sold_stocks = $item->sold_stocks ?? 0;
                                         @endphp
                                         <td>{{ $index + 1 }}</td>
                                         <td class="table-plus">{{ $item->name }}</td>
                                         <td class="table-plus">{{ $item->Category->name }}</td>
                                         <td class="table-plus">{{ $item->Distributor->name }}</td>
-                                        <td class="table-plus">{{ ($item->stocks ?? 0) - $stocks }} {{ $item->type }}</td>
+                                        <td class="table-plus">{{ ($item->stocks ?? 0) - $stocks }} {{ $item->type }} </td>
                                         {{-- <td class="table-plus">Rp {{ number_format($item->distributor_price, 0) }}</td> --}}
                                         <td class="table-plus">Rp {{ number_format($item->sale_price, 0) }}</td>
                                     </tr>

@@ -137,7 +137,7 @@
                                                  aria-describedby="password" />
                                              <label for="password">Password</label>
                                          </div>
-                                         <span class="input-group-text cursor-pointer"><i
+                                         <span class="input-group-text cursor-pointer btn-show"><i
                                                  class="mdi mdi-eye-off-outline"></i></span>
                                      </div>
                                  </div>
@@ -192,6 +192,17 @@
 
      <!-- Page JS -->
      <script src="{{ asset('assets') }}/assets/js/pages-auth.js"></script>
+     <script>
+         $('.btn-show').on('click', function() {
+             if ($('#password').attr('type') == 'password') {
+                 $('.btn-show i').removeClass('mdi-eye-off-outline').addClass('mdi-eye-outline')
+                 $('#password').attr('type', 'text')
+             } else {
+                 $('#password').attr('type', 'password')
+                 $('.btn-show i').addClass('mdi-eye-off-outline').removeClass('mdi-eye-outline')
+             }
+         })
+     </script>
  </body>
 
  </html>

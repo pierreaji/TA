@@ -54,7 +54,7 @@ class ItemsController extends Controller
             $item->id_category = $request->category;
             $item->id_distributor = $request->distributor;
             $item->name = $request->name;
-            $item->type = $request->type;
+            // $item->type = $request->type;
             $item->sale_price = str_replace('.', '', $request->sale_price);
             $item->distributor_price = str_replace('.', '', $request->distributor_price);
             $item->save();

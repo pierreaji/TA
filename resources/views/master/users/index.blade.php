@@ -111,15 +111,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label>NIK</label>
-                                        <input class="form-control" maxlength="16" minlength="16" type="text" name="nik" placeholder="351" required>
+                                        <input class="form-control" maxlength="16" minlength="16" type="text" name="nik" placeholder="" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Phone</label>
-                                        <input class="form-control" maxlength="13" minlength="9" type="text" id="number" name="number" placeholder="0857" required>
+                                        <input class="form-control" maxlength="13" minlength="9" type="text" id="number" name="number" placeholder="" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Address</label>
-                                        <input class="form-control" type="text" name="address" placeholder="Street xx" required>
+                                        <input class="form-control" type="text" name="address" placeholder="" required>
                                     </div>
                                 </div>
 

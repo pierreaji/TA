@@ -28,7 +28,7 @@ class UserRegister extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Sales Register',
+            subject: 'Syncmas - Account Information',
         );
     }
 

@@ -58,6 +58,13 @@
                         <label for="flatpickr-range">Date Range</label>
                     </div>
                 </div>
+                {{-- <div class="col-12 my-4">
+                    <div class="form-floating form-floating-outline">
+                        <input type="text" class="form-control flatpickr-input" placeholder="YYYY-MM-DD to YYYY-MM-DD"
+                            value="{{ Request::get('date') ?? '' }}" id="flatpickr-range" readonly="readonly">
+                        <label for="flatpickr-range">Date Range</label>
+                    </div>
+                </div> --}}
                 <div class="pb-20">
                     <div class="card-datatable table-responsive">
                         <table class="dt-row-grouping table table-bordered">

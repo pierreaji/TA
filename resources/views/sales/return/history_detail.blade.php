@@ -85,7 +85,7 @@
                 exportOptions: {
                     columns: ':visible'
                 },
-                footer: false,
+                footer: true,
                 customize: function(doc) {
                     
                     doc.content.splice( 1, 0, {

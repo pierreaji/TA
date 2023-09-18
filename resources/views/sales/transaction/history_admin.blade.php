@@ -68,17 +68,23 @@
                                         <td class="table-plus">Rp. {{ number_format($item->sale_price * $sold_stocks, 0) }}
                                         </td>
                                         @php
-                                            $check = ($stocks - $sold_stocks) < 1 ? 0 : ($stocks - $sold_stocks);
+                                            $check = $stocks - $sold_stocks < 1 ? 0 : $stocks - $sold_stocks;
                                             $total += $item->sale_price;
                                             $total2 += $item->sale_price * $sold_stocks;
                                             $total3 += $item->sale_price * $check;
-                                            $total4 += $item->sale_price * ($sold_stocks - count($item->Transactions));
+                                            $items_sold = 0;
+                                            foreach ($item->Transactions as $trx) {
+                                                $items_sold += $trx->items_sold;
+                                            }
+                                            $total4 += $item->sale_price * ($sold_stocks - $items_sold);
                                         @endphp
                                         <td>{{ $check }}</td>
                                         <td>Rp. {{ number_format($item->sale_price * $check, 0) }}</td>
-                                        <td>{{ count($item->Transactions) }}</td>
-                                        <td>{{ $sold_stocks - count($item->Transactions) }}</td>
-                                        <td>Rp. {{ number_format($item->sale_price * ($sold_stocks - count($item->Transactions))) }}</td>
+                                        <td>{{ $items_sold }}</td>
+                                        <td>{{ $sold_stocks - $items_sold }}</td>
+                                        <td>Rp.
+                                            {{ number_format($item->sale_price * ($sold_stocks - $items_sold)) }}
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -103,8 +109,8 @@
     <script>
         $(document).ready(function() {
             $('.datatables-basic').DataTable({
-            "lengthMenu": [50, 75, 100],
-            "pageLength": 50,
+                "lengthMenu": [50, 75, 100],
+                "pageLength": 50,
                 dom: '<"card-header flex-column flex-md-row"<"head-label text-center"><"dt-action-buttons text-end pt-3 pt-md-0"B>><"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
                 buttons: [{
                     extend: 'pdf',
@@ -117,15 +123,15 @@
                     exportOptions: {
                         columns: ':visible'
                     },
-                    footer: false,
+                    footer: true,
                     customize: function(doc) {
-                        
-                        doc.content.splice( 1, 0, {
-                            margin: [ 0, 0, 0, 12 ],
+
+                        doc.content.splice(1, 0, {
+                            margin: [0, 0, 0, 12],
                             alignment: 'center',
                             height: 10,
                             image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyAAAAMgBAMAAAApXhtbAAAAD1BMVEUAAAAAAAAAAAADAwP///+cMWYPAAAAA3RSTlMAHR7/FZWhAAAAAWJLR0QEj2jZUQAAAYFJREFUeNrt2zERADAMAzFTKIVSCH9uxdC7DB4kCj9/AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABsOVTJUEUQQRBEEAQRBEEEQRBBEARBBEEQQRBEEAQRBEEQRBAEEQRBBEEQQRAEQQThN8ilioUMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANY8/jpGR25QBw0AAAAASUVORK5CYII='
-                        } );
+                        });
                         doc.content[2].table.widths =
                             Array(doc.content[2].table.body[0].length + 1).join('*').split(
                                 ''); // Remove spaces around page title
